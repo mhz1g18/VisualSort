@@ -1,0 +1,110 @@
+body {
+  background-color: #ffb3ad;
+  margin: 0;
+}
+
+div {
+	display: block;
+}
+
+#toolbar{
+	width: 100%;
+	height: 80px;
+	background-color: lightblue;
+}
+
+#appBody {
+    width: 100%;
+    height: 500px;
+/*    background-color: rgb(230, 230, 230);
+*/    text-align: center;
+}
+
+.statistics {
+    color: #111; 
+    font-family: 'Helvetica Neue', sans-serif; 
+    font-size: 55px; 
+    font-weight: bold; 
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: center;
+}
+
+#toolbarDiv {
+    font-size: 16px;
+    font-family: monospace;
+    font-weight: bold;
+    margin-left: 25px;
+    margin-right: 15px;
+    display: inline-block;
+    color: #24221e;
+}
+
+.arrayElement {
+    padding-top: 25px;
+    font-family: sans-serif;
+    font-weight: 700;
+    background-color: #4286F4;
+    color: white;
+    display: inline-block;
+    /*position: absolute;
+    bottom: 0;*/
+}
+
+.separator {
+    width: 5px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+#changeSize {
+    outline: none;
+    margin-right: 15px;
+}
+
+input[type=range] {
+    -webkit-appearance: none;
+    border: 1px solid white;
+    width: 100px;
+}
+
+input:not([type="image" i]) {
+    box-sizing: border-box;
+}
+
+input[type="range" i] {
+    -webkit-appearance: slider-horizontal;
+    color: rgb(196, 196, 196);
+    cursor: default;
+    padding: initial;
+    border: initial;
+    margin: 2px;
+}
+
+input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 0px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
