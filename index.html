@@ -11,13 +11,9 @@
 		const defColor = "#4286F4";
 		var speed = 50;
 
-		function startTimer() {
-
-		}
-
 		function changeSpeed(speedVar) {
-			speed = 620 - speedVar;
-			document.getElementById("speed").innerHTML = "speed is " + speedVar.toString();
+			speed = 600 - speedVar;
+			document.getElementById("speed").innerHTML = "speed is " + ((speedVar/600*100).toFixed(2)+"%");
 		}	
 
 		function recreateArray() {
@@ -36,9 +32,6 @@
 		    for (let i = 0; i < len; i++) {
 		        for (let j = 0; j < len; j++) {
 					if (elements[j] > elements[j + 1]) {
-			            /*let tmp = elements[j];
-			            elements[j] = elements[j + 1];
-			            elements[j + 1] = tmp;*/
 			            swap(elements, j, j+1);	
 			            
 			            var obj1 = document.getElementById(j.toString());	
@@ -103,9 +96,12 @@
         		swap(input, 0, i);
         		var elementOne = document.getElementById("0");
         		var elementTwo = document.getElementById(i.toString());
+        		elementTwo.style.backgroundColor = "#32a871";
+        		elementOne.style.backgroundColor = "#b80f33";
         		swapElements(elementOne, elementTwo);
-        		elementOne.style.backgroundColor = "#8659f7";
         		await sleep(speed);
+        		elementOne.style.backgroundColor = "#8659f7";
+        		elementTwo.style.backgroundColor = defColor;
         		array_length--;
 		        heap_root(input, 0);
     		}
@@ -142,8 +138,10 @@
 
 		async function sortwithQuickSort() {
 			var start = new Date().getTime();
-			var x = await quickSort(elements, 0, elements.length-1);
-			document.getElementById("timer").innerHTML = "time taken " + ((x- start)/1000).toString();
+			quickSort(elements, 0, elements.length-1).then(function() {
+				var y = new Date().getTime();
+				document.getElementById("timer").innerHTML = "time taken " + ((y-start)/1000);
+			});
 		}
 
 		async function quickSort(items, left, right) {
@@ -157,9 +155,6 @@
 			            quickSort(items, index, right);
 			        }
 			    }
-
-			    console.log(elements);
-			    return new Date().getTime();
 		}
 
 		
@@ -172,16 +167,26 @@
 
 
 		    var pivotObj = document.getElementById(pivotIndex.toString()),
-		        leftObj = document.getElementById(left.toString()),
-		        rightObj = document.getElementById(right.toString());
+		        leftObj = document.getElementById(i.toString()),
+		        rightObj = document.getElementById(j.toString());
+		        	//"#32a871";
+        		//"#b80f33";	
 
+        		leftObj.style.backgroundColor = "#32a871";
+        		rightObj.style.backgroundColor = "#b80f33";
 
 		    while (i <= j) {
 		        while (items[i] < pivot) {
+		        	leftObj.style.backgroundColor = defColor;
 		            i++;
+					leftObj = document.getElementById(i.toString());
+					leftObj.style.backgroundColor = "#32a871";
 		        }
 		        while (items[j] > pivot) {
+		        	rightObj.style.backgroundColor = defColor;
 		            j--;
+		            rightObj = document.getElementById(j.toString());
+		            rightObj.style.backgroundColor = "#b80f33";
 		        }
 		        if (i <= j) {
 		            swap(items, i, j); //swap two elements
@@ -192,10 +197,14 @@
 		            await sleep(speed);
 		            i++;
 		            j--;
+		            leftObj = document.getElementById(i.toString());
+		            rightObj = document.getElementById(j.toString());
 		        }
 		    }
 
-
+		    leftObj.style.backgroundColor = "#8659f7";
+		    rightObj.style.backgroundColor = "#8659f7";
+		    pivotObj.style.backgroundColor = "#8659f7";
 		    return i;
 		}
 
@@ -282,7 +291,7 @@
 			<div id="toolbarDiv">choose size</div>
 			<input type="range" min="0" max="500" id="changeSize" style="background: white; cursor: pointer;" oninput="addDiv(this.value)">
 			<div id="toolbarDiv">choose speed</div>
-			<input type="range" min="20" max="600" id="changeSpeed" style="background: white; cursor: pointer;"  oninput="changeSpeed(this.value)">
+			<input type="range" min="0" max="600" id="changeSpeed" style="background: white; cursor: pointer;"  oninput="changeSpeed(this.value)">
 			<div class="separator"></div>
 			<div id="toolbarDiv">choose sorting method</div>
 			<div id="toolbarDiv" style="cursor: pointer;" onclick="sortWithBubble()">bubble sort</div>
